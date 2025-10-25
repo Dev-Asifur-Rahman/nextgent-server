@@ -18,9 +18,12 @@ async function run() {
       "property_collection"
     );
     const server = http.createServer(async (req, res) => {
-      res.writeHead(200, { "Content-Type": "text/plain" });
+      if (req.url === "/") {
+        res.writeHead(200, { "Content-Type": "text/plain" });
+        res.end('Home Server')
+      }
     });
-    
+
     server.listen(port, () => {
       console.log(`server is running on ${port}`);
     });
